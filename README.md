@@ -1,29 +1,21 @@
-# js_proj
+# Bends
 
-## Concept:
+__Bends__ is an interactive model demonstrating how massive objects warp spacetime. One User may enjoy dragging a singular massive object through a hypothetical spacetime box, thus distorting the boxes coordinate system and evoking the feeling of omniscience in said One User. One User may find that they would prefer to simplify increase or decrease the mass of a singular massive object in a hypothetical spacetime box, and is encouraged to do so if so inclined. A combination of parameter altering actions is similarly encouraged.
 
-Interactive art piece that takes coordinates (ideally you could type in a place by name and it would source the coordinates from google maps or something) and provides artsy topological map 
-Slider to change granularity (how many ft/m between any two given lines)
-Maybe a slider to control characteristics of the lines (color, styling, thickness)
+## Technologies:
 
-## APIs:
-
-Googlemaps (googlemaps may not actually store topological data in which case ???)
-D3
-Onwater (would be cool if I could fill areas with water with blue or some water-like animation) [bonus]
-IP geolocation: could fetch lat/lon from user when the app is loaded and immediately display the topographic map of their area [bonus]
-
-Look into poisson disk sampling
-
-## MVPS (go into these in more depth):
-
-Create topological maps (randomly?)
-Provide a set of sliders and/or buttons to interact with parameters that affect the randomly generated image
-Provide a set of coordinates and instead of a randomly generated topology, the topographical map centered around those coordinates will be generated (previous sliders/buttons still apply) 
+-  `Javascript`
+- `three.js` - camera angle and scene
+- `newton` - for general mathematical ease
 
 ## Timeline:
 
-## Wireframe:
+Day 1: learn relevant technologies/apis
 
-## Inspiration:
-https://observablehq.com/@mbostock/perlin-noise-contours?collection=@observablehq/generative-art
+Day 2: create 3D cartesian plane and rotatable camera view
+
+Day 3: create point mass and have it bend grid according to Newton's law of universal gravitation
+
+Day Bonus: be able to move point mass and affect surrounding grid properly // increase or decrease mass of object
+
+## Wireframe:
