@@ -6,7 +6,7 @@ import { sphere, spherePos } from './sphere';
 
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight);
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight);
 camera.position.set(5.0, 5.0, 10.0);
 camera.lookAt(scene.position);
 
@@ -15,13 +15,12 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 document.body.appendChild(renderer.domElement);
 
-const xSize = 6;
-const ySize = 6;
-const zSize = 6;
+const xSize = 4;
+const ySize = 4;
+const zSize = 4;
 const n = xSize * ySize * zSize;
 
 let geometry = new THREE.BufferGeometry();
-// geometry.dynamic = true;
 
 function mapTo3D(i) {
   let z = Math.floor(i / (xSize * ySize));
@@ -107,12 +106,6 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function render(newPos=spherePos) {
-
-  animateSpace(newPos);
-  renderer.render(scene, camera);
-}
-
 const objectArr = [];
 objectArr.push(sphere);
 
@@ -132,6 +125,10 @@ renderer.domElement.addEventListener("mousemove", function(e) {
   renderer.render(scene, camera);
 });
 
+function render(newPos = spherePos) {
+  animateSpace(newPos);
+  renderer.render(scene, camera);
+}
 
 render();
 window.addEventListener("resize", onWindowResize, false);
