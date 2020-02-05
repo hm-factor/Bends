@@ -106,20 +106,21 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-const objectArr = [];
-objectArr.push(sphere);
+// const objectArr = [];
+// objectArr.push(sphere);
 
-// let orbits = new OrbitControls(camera, renderer.domElement);
+let orbits = new OrbitControls(camera, renderer.domElement);
 
-let drags = new DragControls(objectArr, camera, renderer.domElement);
+// let drags = new DragControls(objectArr, camera, renderer.domElement);
 
-drags.addEventListener('dragstart', function (e) {
-});
+// drags.addEventListener('dragstart', function (e) {
+// });
 
-drags.addEventListener('dragend', function (e) {
-  let { x,y,z } = e.object.position;
-  render({x, y, z});
-});
+// drags.addEventListener('dragend', function (e) {
+//   debugger;
+//   let { x, y, z } = e.object.position;
+//   render({ x, y, z });
+// });
 
 renderer.domElement.addEventListener("mousemove", function(e) {
   renderer.render(scene, camera);
@@ -128,6 +129,24 @@ renderer.domElement.addEventListener("mousemove", function(e) {
 function render(newPos = spherePos) {
   animateSpace(newPos);
   renderer.render(scene, camera);
+}
+
+let moveX = document.getElementById("slider-x"),
+  moveY = document.getElementById("slider-y"),
+  moveZ = document.getElementById("slider-z")
+
+moveX.oninput = updateRender;
+moveY.oninput = updateRender;
+moveZ.oninput = updateRender;
+
+function updateRender(e) {
+
+  let newPos = {
+    'x': moveX.value,
+    'y': moveY.value,
+    'z': moveZ.value
+  }
+  render(newPos);
 }
 
 render();

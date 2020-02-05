@@ -21,7 +21,9 @@ h2 {
   font-size: 3rem;
 }
 
-.slider {
+#slider-x,
+#slider-y,
+#slider-z {
   -webkit-appearance: none;
   width: 100%;
   height: 15px;
@@ -32,11 +34,15 @@ h2 {
   transition: opacity .2s;
 }
 
-.slider:hover {
+#slider-x:hover,
+#slider-y:hover,
+#slider-z:hover {
   opacity: 1;
 }
 
-.slider::-webkit-slider-thumb {
+#slider-x::-webkit-slider-thumb,
+#slider-y::-webkit-slider-thumb,
+#slider-z::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 15px;
@@ -45,7 +51,9 @@ h2 {
   cursor: pointer;
 }
 
-.slider::-moz-range-thumb {
+#slider-x::-moz-range-thumb,
+#slider-y::-moz-range-thumb,
+#slider-z::-moz-range-thumb {
   width: 15px;
   height: 15px;
   background: #3398ff;
