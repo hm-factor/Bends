@@ -2,7 +2,7 @@ import "./styles/index.scss";
 import * as THREE from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { DragControls } from "three/examples/jsm/controls/DragControls";
-import { sphere, spherePos } from './sphere';
+import { sphere } from './sphere';
 
 const scene = new THREE.Scene();
 
@@ -37,7 +37,7 @@ function mapFrom3D(x, y, z) {
 
 let firstTime = true;
 
-function animateSpace(pos = spherePos) {
+function animateSpace(pos = newSphere.position) {
   let positions = [];
   for (let i = 0; i < n; i++) {
     let p = mapTo3D(i);
@@ -98,8 +98,6 @@ function animateSpace(pos = spherePos) {
   scene.add(lines);
 }
 
-scene.add(sphere);
-
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
@@ -122,11 +120,20 @@ let orbits = new OrbitControls(camera, renderer.domElement);
 //   render({ x, y, z });
 // });
 
+let newSphere = sphere();
+scene.add(newSphere);
+
+function rotateSphere() {
+  requestAnimationFrame(render);
+  newSphere.rotation.y += 0.01;
+  newSphere.rotation.z += 0.01;
+}
+
 renderer.domElement.addEventListener("mousemove", function(e) {
   renderer.render(scene, camera);
 });
 
-function render(newPos = spherePos) {
+function render(newPos = newSphere.position) {
   animateSpace(newPos);
   renderer.render(scene, camera);
 }
@@ -139,15 +146,21 @@ moveX.oninput = updateRender;
 moveY.oninput = updateRender;
 moveZ.oninput = updateRender;
 
+
 function updateRender(e) {
 
-  let newPos = {
+  let pos = {
     'x': moveX.value,
     'y': moveY.value,
     'z': moveZ.value
   }
-  render(newPos);
-}
+
+  // let altSphere = sphere(pos);
+  // scene.add(altSphere);
+
+  render(pos);
+};
+
 
 render();
 window.addEventListener("resize", onWindowResize, false);

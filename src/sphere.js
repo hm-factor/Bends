@@ -1,11 +1,17 @@
 import * as THREE from 'three';
 
-const geometry = new THREE.SphereGeometry(.3, 4, 4);
-export const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xff5349, wireframe: true });
-export const sphere = new THREE.Mesh( geometry, sphereMaterial );
+export function sphere() {
 
-export let spherePos = {
-  'x': sphere.position.x,
-  'y': sphere.position.y,
-  'z': sphere.position.z
-};
+  const geometry = new THREE.SphereGeometry(.3, 4, 4);
+  const sphereMaterial = new THREE.MeshBasicMaterial({ 
+    color: 0xff5349, 
+    wireframe: true 
+  });
+  
+  let sphere = new THREE.Mesh( geometry, sphereMaterial );
+  // if (pos !== { 'x': 0, 'y': 0, 'z': 0 }) {
+  //   debugger;
+  //   sphere.position.set(pos)
+  // };
+  return sphere
+}
