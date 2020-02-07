@@ -10,9 +10,14 @@ const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerH
 camera.position.set(5.0, 5.0, 10.0);
 camera.lookAt(scene.position);
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-let smallerInnerWidth = ((2 * window.innerWidth) / 3);
-let smallerInnerHeight = ((2 * window.innerHeight) / 3);
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setClearColor(0x000000, 0);
+
+// let smallerInnerWidth = ((2 * window.innerWidth) / 3);
+// let smallerInnerHeight = ((2 * window.innerHeight) / 3);
+
+let smallerInnerHeight = 560;
+let smallerInnerWidth = 700;
 renderer.setSize(smallerInnerWidth, smallerInnerHeight);
 
 document.body.appendChild(renderer.domElement);
@@ -100,16 +105,17 @@ function animateSpace(pos = newSphere.position) {
   scene.add(lines);
 }
 
-function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(smallerInnerWidth, smallerInnerHeight);
-}
+// function onWindowResize() {
+//   camera.aspect = window.innerWidth / window.innerHeight;
+//   camera.updateProjectionMatrix();
+//   renderer.setSize(smallerInnerWidth, smallerInnerHeight);
+// }
+
+
+let orbits = new OrbitControls(camera, renderer.domElement);
 
 // const objectArr = [];
 // objectArr.push(sphere);
-
-let orbits = new OrbitControls(camera, renderer.domElement);
 
 // let drags = new DragControls(objectArr, camera, renderer.domElement);
 
@@ -165,4 +171,4 @@ function updateRender(e) {
 
 
 render();
-window.addEventListener("resize", onWindowResize, false);
+// window.addEventListener("resize", onWindowResize, false);

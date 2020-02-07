@@ -1,9 +1,11 @@
 body {
   display: flex;
+  justify-content: space-around;
   background-color: black;
   height: 100%;
   width: 300px;
   z-index: 2;
+  outline: none;
 }
 
 body {
@@ -11,6 +13,7 @@ body {
   color: white;
   height: 97vh;
   width: 100vw;
+  outline: none;
 }
 
 .dropdown {
