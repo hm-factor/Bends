@@ -11,7 +11,9 @@ camera.position.set(5.0, 5.0, 10.0);
 camera.lookAt(scene.position);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+let smallerInnerWidth = ((2 * window.innerWidth) / 3);
+let smallerInnerHeight = ((2 * window.innerHeight) / 3);
+renderer.setSize(smallerInnerWidth, smallerInnerHeight);
 
 document.body.appendChild(renderer.domElement);
 
@@ -101,7 +103,7 @@ function animateSpace(pos = newSphere.position) {
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(smallerInnerWidth, smallerInnerHeight);
 }
 
 // const objectArr = [];
