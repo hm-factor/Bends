@@ -17,7 +17,7 @@ renderer.setClearColor(0x000000, 0);
 // let smallerInnerHeight = ((2 * window.innerHeight) / 3);
 
 let smallerInnerHeight = 560;
-let smallerInnerWidth = 700;
+let smallerInnerWidth = 900;
 renderer.setSize(smallerInnerWidth, smallerInnerHeight);
 
 let container = document.getElementById("container");
@@ -107,11 +107,11 @@ function animateSpace(pos = newSphere.position) {
   scene.add(lines);
 }
 
-// function onWindowResize() {
-//   camera.aspect = window.innerWidth / window.innerHeight;
-//   camera.updateProjectionMatrix();
-//   renderer.setSize(smallerInnerWidth, smallerInnerHeight);
-// }
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(smallerInnerWidth, smallerInnerHeight);
+}
 
 
 let orbits = new OrbitControls(camera, renderer.domElement);
@@ -173,4 +173,4 @@ function updateRender(e) {
 
 
 render();
-// window.addEventListener("resize", onWindowResize, false);
+window.addEventListener("resize", onWindowResize, false);
