@@ -20,7 +20,9 @@ let smallerInnerHeight = 560;
 let smallerInnerWidth = 700;
 renderer.setSize(smallerInnerWidth, smallerInnerHeight);
 
-document.body.appendChild(renderer.domElement);
+let container = document.getElementById("container");
+
+container.appendChild(renderer.domElement);
 
 const xSize = 4;
 const ySize = 4;

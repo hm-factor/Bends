@@ -13,7 +13,10 @@ body {
   color: white;
   height: 97vh;
   width: 100vw;
-  outline: none;
+}
+
+canvas {
+  outline: none !important;
 }
 
 .dropdown {
