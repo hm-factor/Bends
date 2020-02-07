@@ -16,6 +16,10 @@ body {
   width: 100vw;
 }
 
+h2 {
+  font-size: 3rem;
+}
+
 .controls {
   position: absolute;
   top: 30px;
@@ -41,10 +45,18 @@ canvas {
   z-index: 3;
 }
 
+.dropdown:hover h1 {
+  cursor: pointer;
+  color: #3398ff;
+  padding: 0 3px;
+  border: 1px solid #3398ff;
+}
+
 .dropdown-content {
   position: absolute;
   display: none;
   background-color: darkslategrey;
+  border-radius: 5px;
   width: 480px;
   height: 255px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -61,10 +73,6 @@ canvas {
 
 .dropdown-content p {
   margin: 12px 0;
-}
-
-h2 {
-  font-size: 3rem;
 }
 
 #slider-x,
