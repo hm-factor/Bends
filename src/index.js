@@ -47,6 +47,7 @@ function mapFrom3D(x, y, z) {
 let firstTime = true;
 
 function animateSpace(pos = newSphere.position) {
+  debugger;
   let positions = [];
   for (let i = 0; i < n; i++) {
     let p = mapTo3D(i);
