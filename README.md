@@ -6,4 +6,3 @@ __Bends__ is an interactive model demonstrating how massive objects warp spaceti
 
 -  `Javascript`
 - `three.js` - camera angle and scene
-- `newton` - for general mathematical ease
