@@ -133,11 +133,11 @@ let orbits = new OrbitControls(camera, renderer.domElement);
 let newSphere = sphere();
 scene.add(newSphere);
 
-function rotateSphere() {
-  requestAnimationFrame(render);
-  newSphere.rotation.y += 0.01;
-  newSphere.rotation.z += 0.01;
-}
+// function rotateSphere() {
+//   requestAnimationFrame(render);
+//   newSphere.rotation.y += 0.01;
+//   newSphere.rotation.z += 0.01;
+// }
 
 renderer.domElement.addEventListener("mousemove", function(e) {
   renderer.render(scene, camera);
