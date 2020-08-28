@@ -6,16 +6,3 @@ __Bends__ is an interactive model demonstrating how massive objects warp spaceti
 
 -  `Javascript`
 - `three.js` - camera angle and scene
-- `newton` - for general mathematical ease
-
-## Timeline:
-
-Day 1: learn relevant technologies/apis
-
-Day 2: create 3D cartesian plane and rotatable camera view
-
-Day 3: create point mass and have it bend grid according to Newton's law of universal gravitation
-
-Day Bonus: be able to move point mass and affect surrounding grid properly // increase or decrease mass of object
-
-## Wireframe:
