@@ -10,8 +10,7 @@ export function sphere() {
   
   let sphere = new THREE.Mesh( geometry, sphereMaterial );
   // if (pos !== { 'x': 0, 'y': 0, 'z': 0 }) {
-  //   debugger;
   //   sphere.position.set(pos)
   // };
   return sphere
-}
+};

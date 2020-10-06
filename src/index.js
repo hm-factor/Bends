@@ -1,6 +1,6 @@
 import "./styles/index.scss";
 import * as THREE from 'three';
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { DragControls } from "three/examples/jsm/controls/DragControls";
 import { sphere } from './sphere';
 
@@ -12,9 +12,6 @@ camera.lookAt(scene.position);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setClearColor(0x000000, 0);
-
-// let smallerInnerWidth = ((2 * window.innerWidth) / 3);
-// let smallerInnerHeight = ((2 * window.innerHeight) / 3);
 
 let smallerInnerHeight = 560;
 let smallerInnerWidth = 900;
@@ -37,12 +34,12 @@ function mapTo3D(i) {
   let y = Math.floor(i / xSize);
   let x = i % xSize;
   return { x: x, y: y, z: z };
-}
+};
 
 // inverse of mapTo3D
 function mapFrom3D(x, y, z) {
   return x + y * xSize + z * xSize * ySize;
-}
+};
 
 let firstTime = true;
 
@@ -58,7 +55,7 @@ function animateSpace(pos = newSphere.position) {
     let bend = 10*(((newPosX - pos.x)**2 + (newPosY - pos.y)**2 + (newPosZ - pos.z)**2)**(1/2));
     bend = Math.min(bend, 10);
     positions.push(...[bend*newPosX, bend*newPosY, bend*newPosZ]);
-  }
+  };
 
   let posAttribute = new THREE.Float32BufferAttribute(positions, 3, true);
   geometry.setAttribute("position", posAttribute);
@@ -105,71 +102,66 @@ function animateSpace(pos = newSphere.position) {
 
   const lines = new THREE.LineSegments(geometry, lineMats);
   scene.add(lines);
-}
+};
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(smallerInnerWidth, smallerInnerHeight);
-}
+};
 
 
-let orbits = new OrbitControls(camera, renderer.domElement);
+// let orbits = new OrbitControls(camera, renderer.domElement);
 
-// const objectArr = [];
-// objectArr.push(sphere);
+const objectArr = [];
+objectArr.push(sphere);
 
-// let drags = new DragControls(objectArr, camera, renderer.domElement);
+const drags = new DragControls(objectArr, camera, renderer.domElement);
 
-// drags.addEventListener('dragstart', function (e) {
-// });
+drags.addEventListener('dragstart', function (e) {
+  debugger;
+});
 
-// drags.addEventListener('dragend', function (e) {
-//   debugger;
-//   let { x, y, z } = e.object.position;
-//   render({ x, y, z });
-// });
+drags.addEventListener('dragend', function (e) {
+  debugger;
+  let { x, y, z } = e.object.position;
+  render({ x, y, z });
+});
 
 let newSphere = sphere();
 scene.add(newSphere);
 
-// function rotateSphere() {
-//   requestAnimationFrame(render);
-//   newSphere.rotation.y += 0.01;
-//   newSphere.rotation.z += 0.01;
-// }
-
-renderer.domElement.addEventListener("mousemove", function(e) {
-  renderer.render(scene, camera);
-});
+// renderer.domElement.addEventListener("mousemove", function(e) {
+//   renderer.render(scene, camera);
+// });
 
 function render(newPos = newSphere.position) {
   animateSpace(newPos);
   renderer.render(scene, camera);
-}
-
-let moveX = document.getElementById("slider-x"),
-  moveY = document.getElementById("slider-y"),
-  moveZ = document.getElementById("slider-z")
-
-moveX.oninput = updateRender;
-moveY.oninput = updateRender;
-moveZ.oninput = updateRender;
-
-
-function updateRender(e) {
-
-  let pos = {
-    'x': moveX.value,
-    'y': moveY.value,
-    'z': moveZ.value
-  }
-
-  // let altSphere = sphere(pos);
-  // scene.add(altSphere);
-
-  render(pos);
 };
+
+// let moveX = document.getElementById("slider-x"),
+//   moveY = document.getElementById("slider-y"),
+//   moveZ = document.getElementById("slider-z")
+
+// moveX.oninput = updateRender;
+// moveY.oninput = updateRender;
+// moveZ.oninput = updateRender;
+
+
+// function updateRender(e) {
+
+//   // let pos = {
+//   //   'x': moveX.value,
+//   //   'y': moveY.value,
+//   //   'z': moveZ.value
+//   // }
+
+//   // let altSphere = sphere(pos);
+//   // scene.add(altSphere);
+
+//   render(pos);
+// };
 
 
 render();
