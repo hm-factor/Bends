@@ -114,7 +114,7 @@ function onWindowResize() {
 }
 
 
-let orbits = new OrbitControls(camera, renderer.domElement);
+// let orbits = new OrbitControls(camera, renderer.domElement);
 
 // const objectArr = [];
 // objectArr.push(sphere);
