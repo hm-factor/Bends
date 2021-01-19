@@ -1,8 +1,9 @@
-import "./styles/index.scss";
+// import "./styles/index.scss";
 import * as THREE from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { DragControls } from "three/examples/jsm/controls/DragControls";
 import { sphere } from './sphere';
+import * as law from './newtonsLaw.js';
 
 const scene = new THREE.Scene();
 
@@ -36,6 +37,7 @@ function mapTo3D(i) {
   i -= z * xSize * ySize;
   let y = Math.floor(i / xSize);
   let x = i % xSize;
+  console.log(x, y, z);
   return { x: x, y: y, z: z };
 }
 
@@ -55,7 +57,8 @@ function animateSpace(pos = newSphere.position) {
     let newPosY = ( ((p.y - (ySize-1) / 2) / ySize));
     let newPosZ = ( ((p.z - (zSize-1) / 2) / zSize));
     
-    let bend = 10*(((newPosX - pos.x)**2 + (newPosY - pos.y)**2 + (newPosZ - pos.z)**2)**(1/2));
+    let r = (((newPosX - pos.x)**2 + (newPosY - pos.y)**2 + (newPosZ - pos.z)**2)**(1/2));
+    let bend = law(1, 1, r, 10);
     bend = Math.min(bend, 10);
     positions.push(...[bend*newPosX, bend*newPosY, bend*newPosZ]);
   }
@@ -114,7 +117,7 @@ function onWindowResize() {
 }
 
 
-let orbits = new OrbitControls(camera, renderer.domElement);
+// let orbits = new OrbitControls(camera, renderer.domElement);
 
 // const objectArr = [];
 // objectArr.push(sphere);
